@@ -23,7 +23,6 @@
         color: #333;
       }
 
-      /* HERO */
       header {
         height: 100vh;
         background:
@@ -54,7 +53,6 @@
         opacity: 0.9;
       }
 
-      /* SECTION */
       section {
         padding: 50px 20px;
         max-width: 1000px;
@@ -65,10 +63,9 @@
         text-align: center;
         margin-bottom: 25px;
         font-family: "Playfair Display", serif;
-        color: #8b5e3c; /* classy gold-brown */
+        color: #8b5e3c;
       }
 
-      /* CARD */
       .card {
         background: #ffffffcc;
         padding: 20px;
@@ -82,14 +79,12 @@
         transform: translateY(-4px);
       }
 
-      /* GRID */
       .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
       }
 
-      /* IMAGE */
       .profile-img {
         display: block;
         margin: 20px auto;
@@ -100,7 +95,6 @@
         object-fit: cover;
       }
 
-      /* FOOTER */
       footer {
         background: #8b5e3c;
         color: white;
@@ -109,7 +103,23 @@
         font-size: 14px;
       }
 
-      /* MOBILE OPTIMIZATION */
+      /* MUSIC BUTTON */
+      .music-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background: #8b5e3c;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .music-btn:hover {
+        opacity: 0.9;
+      }
+
       @media (max-width: 768px) {
         header {
           height: 80vh;
@@ -138,6 +148,7 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <div class="overlay">
@@ -145,17 +156,24 @@
         <p>UP Police | 28 Years</p>
       </div>
     </header>
+
     <section>
       <h2>About</h2>
-      <img
-        src="profile1.jpg"
-        class="profile-img"
-      />
+      <img src="public/profile1.jpg" class="profile-img" />
       <div class="card">
         A well-educated, ambitious, and family-oriented individual with modern
         outlook and strong traditional values. Loves music, travel, and fitness.
       </div>
+
+      <!-- MUSIC BUTTON -->
+      <button class="music-btn" onclick="playMusic()">▶ Play Background Music</button>
+
+      <!-- AUDIO (FIXED FOR VERCEL) -->
+      <audio id="bgMusic" loop>
+        <source src="public/flute_35.mp3" type="audio/mpeg" />
+      </audio>
     </section>
+
     <section>
       <h2>Personal Details</h2>
       <div class="grid">
@@ -167,27 +185,29 @@
         <div class="card">🕒 TOB: 02:55 PM</div>
         <div class="card">♈ Rashi: Dhanur (Sagittarius)</div>
         <div class="card">👤 Complexion: Fair</div>
-        <div class="card">👪 Gotra: Kashyap </div>
+        <div class="card">👪 Gotra: Kashyap</div>
         <div class="card">💼 Work: UPP Constable</div>
       </div>
     </section>
+
     <section>
       <h2>Education & Career</h2>
       <div class="card">
-        🎓 BSC in Botany,Chemistry From MGKVP <br /><br />
-        💼 Currently UPP Constable, previously Railway Employee for 5 years <br /><br />
-        💰 ₹12 LPA
+        🎓 BSC in Botany, Chemistry From MGKVP <br /><br />
+        💼 Currently UPP Constable, previously Railway Employee for 5 years <br />
       </div>
     </section>
+
     <section>
       <h2>Family Details</h2>
       <div class="card">
-        👨 Father: Mr. Sunil Kumar Shah — Businessman <br />
-        👩 Mother: Mrs. Laxmi Shah — AnganwadiTeacher <br />
-        👦 Younger Brother: Ayush Shah — Employee at Wipro <br />
-        👧 Younger Sister: Shreyanshi Gupta — Studying
+        Father: Mr. Sunil Kumar Shah — Businessman <br />
+        Mother: Mrs. Laxmi Shah — Anganwadi Teacher <br />
+        Younger Brother: Ayush Shah — Employee at Wipro <br />
+        Younger Sister: Shreyanshi Gupta — Studying
       </div>
     </section>
+
     <section>
       <h2>Partner Preferences 💍</h2>
       <div class="card">
@@ -195,6 +215,7 @@
         values family and personal growth.
       </div>
     </section>
+
     <section>
       <h2>Contact</h2>
       <div class="card">
@@ -202,14 +223,18 @@
         Father's 📞 +91 9336864961
       </div>
     </section>
+
     <footer>Made with ❤️ for Wedding Proposal</footer>
-    <!-- OPTIONAL MUSIC -->
-    <audio id="bgMusic" autoplay loop>
-    <source src="flute_35.mp3" type="audio/mpeg">
-</audio>
+
+    <script>
+      const audio = document.getElementById("bgMusic");
+      audio.volume = 0.2;
+
+      function playMusic() {
+        audio.play().catch((err) => {
+          console.log("Autoplay blocked:", err);
+        });
+      }
+    </script>
   </body>
-  <script>
-    const audio = document.getElementById("bgMusic");
-    audio.volume = 0.2; // 🔉 0.0 to 1.0 (0.2 = low volume)
-</script>
 </html>
